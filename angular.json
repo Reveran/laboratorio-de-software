@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "libreria": "apps/libreria",
+    "libreria-e2e": "apps/libreria-e2e"
+  }
+}
