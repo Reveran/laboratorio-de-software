@@ -1,0 +1,21 @@
+.dropdown-items-wrapper {
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+.searchbar {
+	width: calc(100% - 2rem);
+}
+
+.group-wrapper {
+	max-width: 100%;
+}
+
+.btn.btn-outline-primary.dropdown-toggle {
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+}
+
+.btn:hover {
+	background-color: #241d4e;
+}

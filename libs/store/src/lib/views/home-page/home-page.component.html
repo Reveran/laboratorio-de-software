@@ -1,0 +1,13 @@
+<nabu-nav-bar></nabu-nav-bar>
+<div class="container mt-3">
+  <div class="row">
+    <nabu-side-panel class="col-3"></nabu-side-panel>
+    <div class="col-9">
+      <nabu-featured-carousel></nabu-featured-carousel>
+      <h5 class="row m-1 mt-3 mb-2">Nuevos Libros</h5>
+      <div class="row">
+        <nabu-book-preview *ngFor="let book of books" [image]="book.portada" [name]="book.nombre" class="d-block col-2"></nabu-book-preview>
+      </div>
+    </div>
+  </div>
+</div>

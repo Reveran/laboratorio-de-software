@@ -1,0 +1,40 @@
+<div class="tags">
+  <div class="values">
+    <div *ngIf="isMoney; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+      <span id="range1"> {{ sliderOneValue | currency:'COP':'symbol':'3.0' }} </span>
+      <span> &dash; </span>
+      <span id="range2"> {{ sliderTwoValue | currency:'COP':'symbol':'3.0' }} </span>
+    </ng-template>
+    <ng-template #elseBlock>
+      <span id="range1"> {{ sliderOneValue }} </span>
+      <span> &dash; </span>
+      <span id="range2"> {{ sliderTwoValue }} </span>
+    </ng-template>
+  </div>
+</div>
+<div class="cont">
+  <div class="slider-track" [style.background]="trackStyle"></div>
+  <input
+    type="range"
+    min="{{ sliderMinValue }}"
+    max="{{ sliderMaxValue }}"
+    value="{{ sliderOneValue }}"
+    step="{{ step }}"
+    id="slider-1"
+    [(ngModel)]="sliderOneValue"
+    (change)="slideOne()"
+    (input)="fillColor()"
+  />
+  <input
+    type="range"
+    min="{{ sliderMinValue }}"
+    max="{{ sliderMaxValue }}"
+    value="{{ sliderTwoValue }}"
+    step=" {{ step }}"
+    id="slider-2"
+    [(ngModel)]="sliderTwoValue"
+    (change)="slideTwo()"
+    (input)="fillColor()"
+  />
+</div>

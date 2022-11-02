@@ -1,0 +1,11 @@
+<ngb-carousel>
+  <ng-template *ngFor="let slide of slides" ngbSlide>
+    <div class="ratio ratio-21x9">
+      <img [src]="slide['image']" class="d-block w-100 rounded"/>
+    </div>
+    <div class="carousel-caption d-block text-start">
+      <h3>{{slide['title']}}</h3>
+      <p>{{slide['description']}}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>

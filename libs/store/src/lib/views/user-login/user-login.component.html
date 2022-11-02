@@ -1,0 +1,36 @@
+<div class="d-flex full-height justify-content-center align-items-center">
+	<div class="align-middle card col-lg-6 col-11 shadow">
+		<div class="row">
+			<div class="col-lg-3 col-6 card-body fancy-bg py-5">
+				<img src="/assets/Logo.svg" class="nabu-logo" alt="" />
+				<br />
+				<br />
+				<h3 class="text-white fw-light">¡Hola!</h3>
+				<p class="text-white">Nos alegra tenerte de nuevo.</p>
+				<br />
+				<p class="text-white">¿No tienes una cuenta?</p>
+				<div class="d-grid">
+					<a href="/register" class="btn btn-light">Registrate</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-6 card-body form-side py-5">
+				<h2 class="fw-bold">Iniciar Sesión</h2>
+				<ngb-alert type="{{ responseType }}" class="{{ alertVisivility }}" [dismissible]="false" [innerHTML]="serverResponse"> </ngb-alert>
+				<form (ngSubmit)="summitForm()" class="mb-4 needs-validation" method="post" novalidate>
+					<div class="mb-3">
+						<label for="username" class="form-label">Nombre de Usuario</label>
+						<input type="text" id="username" class="form-control" (input)="checkUsername()" placeholder="Usuario123" aria-label="Usuario" />
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">Contraseña</label>
+						<input type="password" id="Pass" (input)="checkPass()" class="form-control" placeholder="Contraseña123" aria-label="Contrasena" />
+					</div>
+					<div class="d-grid">
+						<button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+					</div>
+				</form>
+				<a href="#">¿Olvidaste tu contraseña?</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<div class="container">
+		<a class="d-flex col-lg-3 col-sm-2 navbar-brand" href="#"></a>
+		<form class="d-flex col-lg-6 col-sm-8" role="search">
+			<fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+			<input class="form-control me-2" type="search" placeholder="Busca un Libro" aria-label="Search" />
+		</form>
+		<div class="col-lg-3 col-sm-1 d-flex justify-content-end">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<ul class="collapse navbar-collapse navbar-nav mb-2 mb-lg-0 d-lg-flex justify-content-end">
+				<div *ngIf="logedin; then userDropdown; else loginOptions"></div>
+				<ng-template #userDropdown>
+					<li class="nav-item d-flex" ngbDropdown>
+						<a class="nav-link" tabindex="0" ngbDropdownToggle id="ProfileDropdown" role="button">
+							<nabu-profile-picture size="sm"></nabu-profile-picture> <span>{{ nombre }}</span>
+						</a>
+						<div ngbDropdownMenu aria-labelledby="ProfileDropdown" class="dropdown-menu dropdown-menu-end shadow">
+							<a ngbDropdownItem href="/user" class="text-primary">Perfil</a>
+							<a ngbDropdownItem href="/user/carrito" class="text-primary">Carrito de Compras</a>
+							<a ngbDropdownItem href="/user/historial" class="text-primary">Historial de Compras</a>
+							<a ngbDropdownItem href="/user/mensajes" class="text-primary">Mensajes</a>
+							<a ngbDropdownItem href="#" (click)="logout()" class="text-danger">Cerrar Sesion</a>
+						</div>
+					</li>
+					<!-- <div ngbDropdown class="nav-item dropdown bg-primary">
+					<button type="button" class="text-light" id="dropdownBasic1" ngbDropdownToggle>
+						
+						<span class="d-inline-block">Toggle dropdown</span>
+					</button>
+					<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+						<button ngbDropdownItem>Action - 1</button>
+						<button ngbDropdownItem>Another Action</button>
+						<button ngbDropdownItem>Something else is here</button>
+					</div>
+				</div> -->
+				</ng-template>
+				<ng-template #loginOptions>
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="/login">Ingresar</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Registrarse</a>
+					</li>
+				</ng-template>
+			</ul>
+		</div>
+	</div>
+</nav>

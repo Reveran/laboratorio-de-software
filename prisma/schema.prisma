@@ -9,3 +9,228 @@ datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
 }
+
+model Libro {
+  id          Int               @id @default(autoincrement())
+  fecha       DateTime
+  paginas     Int
+  editorial   String
+  issn        String
+  idioma      String
+  stock       Int
+  estado      String
+  precio      Int
+  generos     String
+  autores     Autor[]
+  editorialId Int
+  idiomaId    Int
+  estadoId    Int
+  Reserva     Reserva?          @relation(fields: [reservaId], references: [id])
+  reservaId   Int?
+  Compra      Compra?           @relation(fields: [compraId], references: [id])
+  compraId    Int?
+  portada     String
+  sinopsis    String
+
+  @@map("libros")
+}
+
+model Autor {
+  id         Int       @id @default(autoincrement())
+  nombre     String
+  libros     Libro[]
+  seguidores Cliente[]
+
+  @@map("autores")
+}
+
+// -------------------------------
+
+model Cliente {
+  id                Int             @id @default(autoincrement())
+  nombres           String
+  apellidos         String
+  correo            String          @unique
+  DNI               String
+  usuario           String          @unique
+  contrasena        String          //hash
+  facturacion       Direccion       @relation(fields: [direccionId], references: [id])
+  nacimiento        DateTime
+  lugarNacimiento   String
+  genero            String
+  subscrito         Boolean         @default(false)
+  varificado        Boolean         @default(false)
+  temasPreferidos   Temaliterario[]
+  autoresPreferidos Autor[]
+  reservas          Reserva[]
+  compras           Compra[]
+  devoluciones      Devolucion[]
+  direccionId       Int             @unique
+  tarjeta           tarjeta[]
+  Mensaje           Mensaje[]
+  Busqueda          Busqueda[]
+  RefreshToken      RefreshToken[]
+
+  @@map("clientes")
+}
+
+model Temaliterario {
+  id         Int       @id @default(autoincrement())
+  nombre     String
+  seguidores Cliente[]
+
+  @@map("temas_literarios")
+}
+
+model Reserva {
+  id        Int      @id @default(autoincrement())
+  cliente   Cliente  @relation(fields: [clienteId], references: [id])
+  fecha     DateTime
+  libros    Libro[]
+  clienteId Int
+
+  @@map("reservas")
+}
+
+model Devolucion {
+  id                Int             @id @default(autoincrement())
+  cliente           Cliente         @relation(fields: [clienteId], references: [id])
+  compra            Compra          @relation(fields: [compraId], references: [id])
+  razon             String
+  ampliacion        String
+  clienteId         Int
+  compraId          Int
+  razonDevolucionId Int
+
+  @@map("devoluciones")
+}
+
+model Compra {
+  cliente        Cliente      @relation(fields: [clienteId], references: [id])
+  id             Int          @id @default(autoincrement())
+  costo          Int
+  estado         EstadoCompra @relation(fields: [estadoCompraId], references: [id])
+  libros         Libro[]
+  fecha          DateTime
+  fecharecibido  DateTime
+  Devolucion     Devolucion[]
+  clienteId      Int
+  estadoCompraId Int
+
+  @@map("compra")
+}
+
+model EstadoCompra {
+  id     Int      @id @default(autoincrement())
+  nombre String
+  Compra Compra[]
+
+  @@map("estados_de_compra")
+}
+
+model tarjeta {
+  id            Int         @id @default(autoincrement())
+  cliente       Cliente     @relation(fields: [clienteId], references: [id])
+  number        String
+  last          Int
+  ccv           Int //hash
+  propietario   String
+  banco         String
+  tipo          String
+  clienteId     Int
+  bancoId       Int
+  tipoTarjetaId Int
+
+  @@map("tarjetas")
+}
+
+model Direccion {
+  id             Int          @id @default(autoincrement())
+  cliente        Cliente?
+  pais           String
+  departamento   String
+  municipio      String
+  linea1         String
+  linea2         String?
+  detalle        String?
+  Tienda         Tienda[]
+
+  @@map("direcciones")
+}
+
+model Tienda {
+  id          Int       @id @default(autoincrement())
+  direccion   Direccion @relation(fields: [direccionId], references: [id])
+  desripcion  String?
+  latitud     Int
+  longitud    Int
+  direccionId Int
+
+  @@map("tiendas")
+}
+
+// -------------------------------
+
+model Root {
+  id         Int    @id @default(autoincrement())
+  usuario    String @unique
+  contrasena String //hash
+
+  @@map("roots")
+}
+
+model Administrador {
+  id              Int       @id @default(autoincrement())
+  nombres         String
+  apellidos       String
+  correo          String    @unique
+  DNI             String
+  usuario         String    @unique
+  contrasena      String //hash
+  nacimiento      DateTime
+  lugarNacimiento String
+  genero          String
+  sexoId          Int
+  Mensaje         Mensaje[]
+
+  @@map("administradores")
+}
+
+// -------------------------------
+
+model Mensaje {
+  id              Int              @id @default(autoincrement())
+  cliente         Cliente          @relation(fields: [clienteId], references: [id])
+  administrador   Administrador    @relation(fields: [administradorId], references: [id])
+  sentido         Boolean
+  original        MensajeEditado[]
+  fecha           DateTime
+  mensaje         String
+  clienteId       Int
+  administradorId Int
+}
+
+model MensajeEditado {
+  id        Int      @id @default(autoincrement())
+  texto   String
+  fecha     DateTime
+  Mensaje   Mensaje? @relation(fields: [mensajeId], references: [id])
+  mensajeId Int?
+}
+
+// -------------------------------
+
+model Busqueda {
+  id        Int      @id @default(autoincrement())
+  cliente   Cliente  @relation(fields: [clienteId], references: [id])
+  fecha     DateTime
+  clienteId Int
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  cliente   Cliente  @relation(fields: [clienteId], references: [id])
+  fecha     DateTime
+  value     String
+  clienteId Int
+}

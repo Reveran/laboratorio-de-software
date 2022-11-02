@@ -1,0 +1,31 @@
+<div class="btn-group group-wrapper col-12" role="group">
+	<div ngbDropdown class="btn-group col-3" role="group">
+		<button type="button" class="btn dropdown-toggle w-100 {{ countryValidity }}" ngbDropdownToggle>{{ selectedCountry ? selectedCountry.flag + ' ' + selectedCountry.isoCode : 'País' }}</button>
+		<div ngbDropdownMenu class="shadow" aria-labelledby="countryDropdown">
+			<input type="search" class="mx-3 searchbar" (input)="filterCountry(countryfilter.value)" #countryfilter placeholder="Buscar Pais" />
+			<div class="dropdown-items-wrapper">
+				<button type="button" ngbDropdownItem *ngFor="let pais of countries" (click)="setCountry(pais)">{{ pais.flag }} {{ pais.name }}</button>
+			</div>
+		</div>
+	</div>
+
+	<div ngbDropdown class="btn-group col-5" role="group">
+		<button type="button" class="btn dropdown-toggle w-100 {{ stateValidity }}" [disabled]="!selectedCountry" ngbDropdownToggle>{{ selectedState ? selectedState.name : 'Departamento' }}</button>
+		<div ngbDropdownMenu class="shadow" aria-labelledby="stateDropdown">
+			<input type="search" class="mx-3 searchbar" (input)="filterState(statefilter.value)" #statefilter placeholder="Buscar Departamento" />
+			<div class="dropdown-items-wrapper">
+				<button type="button" ngbDropdownItem *ngFor="let dep of states" (click)="setState(dep)">{{ dep.name }}</button>
+			</div>
+		</div>
+	</div>
+
+	<div ngbDropdown class="btn-group col-4" role="group">
+		<button type="button" class="btn dropdown-toggle w-100 {{ cityValidity }}" [disabled]="!selectedState" id="cityDropdown" ngbDropdownToggle>{{ selectedCity ? selectedCity.name : 'Ciudad' }}</button>
+		<div ngbDropdownMenu class="shadow" aria-labelledby="stateDropdown">
+			<input type="search" class="mx-3 searchbar" (input)="filterCity(statefilter.value)" #statefilter placeholder="Buscar Departamento" />
+			<div class="dropdown-items-wrapper">
+				<button type="button" ngbDropdownItem *ngFor="let ciudad of cities" (click)="setCity(ciudad)">{{ ciudad.name }}</button>
+			</div>
+		</div>
+	</div>
+</div>

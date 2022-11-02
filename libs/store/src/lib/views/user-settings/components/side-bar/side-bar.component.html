@@ -1,0 +1,31 @@
+<div class="card shadow">
+	<div class="card-body">
+		<h4>Mi Cuenta</h4>
+		<ul class="nav flex-column nav-pills">
+			<li class="nav-item">
+				<a class="nav-link {{ actives[0] }}" (click)="markActive(0)" routerLink="/user" href="#">Resumen</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ actives[1] }}" (click)="markActive(1)" routerLink="/user/carrito">Carrito de Compras</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ actives[2] }}" (click)="markActive(2)" routerLink="/user/historial">Historial de Compras</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ actives[3] }}" (click)="markActive(3)" routerLink="/user/editar">Editar Perfil</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ actives[4] }}" (click)="markActive(4)" routerLink="/user/pagos">Medios de Pago</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ actives[5] }}" (click)="markActive(5)" routerLink="/user/ubicaciones">Mis Ubicaciones</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ actives[6] }}" (click)="markActive(6)" routerLink="/user/mensajes">Mensajes</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link link-danger" href="#">Cerrar Sesión</a>
+			</li>
+		</ul>
+	</div>
+</div>

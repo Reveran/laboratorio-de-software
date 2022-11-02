@@ -1,0 +1,9 @@
+<div class="profile-picture d-inline-block {{ size }}">
+	<div *ngIf="false; then defaultPicture; else customPicture"></div>
+	<ng-template #defaultPicture>
+		<fa-icon [icon]="userIcon"></fa-icon>
+	</ng-template>
+	<ng-template #customPicture>
+		<img src="{{ userImage }}" alt="Imagen de Perfil" />
+	</ng-template>
+</div>

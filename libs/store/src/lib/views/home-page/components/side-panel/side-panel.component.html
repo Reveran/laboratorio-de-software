@@ -1,0 +1,87 @@
+<div class="card shadow p-3">
+  <h5>Filtrar</h5>
+  <a
+    class="nav-link mt-2"
+    data-bs-toggle="collapse"
+    href="#collapseExample"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    <b>Genero:</b>
+    <i class="bi bi-caret-down-fill text-end"></i>
+  </a>
+  <div class="collapse show" id="collapseExample">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+      />
+      <label class="form-check-label" for="flexCheckDefault"> Fantasia </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckChecked"
+      />
+      <label class="form-check-label" for="flexCheckChecked"> Aventuras </label>
+    </div>
+  </div>
+  <a
+    class="nav-link mt-2"
+    data-bs-toggle="collapse"
+    href="#collapseExample"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    <b>Editorial:</b>
+    <i class="bi bi-caret-down-fill text-end"></i>
+  </a>
+  <div class="collapse show" id="collapseExample">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+      />
+      <label class="form-check-label" for="flexCheckDefault"> Planeta </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckChecked"
+      />
+      <label class="form-check-label" for="flexCheckChecked">
+        Ciculo Rojo
+      </label>
+    </div>
+  </div>
+  <a
+    class="nav-link mt-2"
+    data-bs-toggle="collapse"
+    href="#collapseExample"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    <b>Precio:</b>
+    <i class="bi bi-caret-down-fill text-end"></i>
+  </a>
+  <div class="collapse show" id="collapseExample">
+    <nabu-range-selector
+      [isMoney]="true"
+      [step]="1000"
+      [minGap]="1000"
+      [sliderMinValue]="5000"
+      [sliderMaxValue]="300000"
+    ></nabu-range-selector>
+  </div>
+</div>

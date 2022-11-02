@@ -1,0 +1,40 @@
+<div class="card">
+	<form (ngSubmit)="summitForm()" class="row mx-3 needs-validation" method="post" novalidate>
+		<div class="col-6">
+			<label class="mt-2" for="Nombre">Nombre</label>
+			<input type="text" class="form-control" placeholder="Nombre" id="Nombre" aria-label="Nombre" (input)="checkName()" />
+			<label class="mt-2" for="Apellido">Apellido</label>
+			<input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" id="Apellido" (input)="checkLastName()" />
+			<label class="mt-2" for="Sexo">Sexo</label><br />
+			<nabu-sex-picker #sexPicker></nabu-sex-picker><br />
+			<label class="mt-2" for="DNI">DNI / CC</label>
+			<input type="text" class="form-control" placeholder="1.234.567.890" aria-label="DNI" id="DNI" (input)="checkDNI()" />
+			<label class="mt-2" for="Fecha-Nacimiento">Fecha de Nacimiento</label>
+			<div class="input-group">
+				<input id="BornDatePicker" type="text" class="form-control" placeholder="yyyy-mm-dd" name="dp" (click)="d.open()" (input)="checkBornDate()" [(ngModel)]="bornDate" [maxDate]="newestDate" [minDate]="oldestDate" ngbDatepicker #d="ngbDatepicker" />
+				<button class="btn btn-outline-primary calendar" (click)="d.toggle()" type="button">
+					<fa-icon [icon]="faCalendarDays"></fa-icon>
+				</button>
+			</div>
+			<label class="mt-2" for="DNI">Lugar de Nacimiento</label>
+			<nabu-city-picker></nabu-city-picker>
+			<br /><br />
+			<button type="submit" class="col-12 btn btn-primary">Actualizar Informacion</button>
+		</div>
+		<div class="col-6 mb-3">
+			<label class="mt-2" for="Usuario">Nombre de Usuario</label>
+			<input type="text" id="username" class="form-control" (input)="checkUsername()" placeholder="Usuario123" aria-label="Usuario" />
+			<label for="Correo" class="mt-2">Correo</label>
+			<input type="email" id="Email" (input)="checkEmail()" class="form-control" placeholder="Correo" aria-label="Correo" />
+			<label for="Contrasena" class="mt-2">Contraseña</label>
+			<input type="password" id="Pass" (input)="checkPass()" class="form-control" placeholder="Contraseña123" aria-label="Contrasena" />
+			<label for="Contraseña2" class="mt-2">Repita la Contraseña</label>
+			<input type="password" id="Repass" (input)="checkRePass()" class="form-control" placeholder="Contraseña123" aria-label="Contrasena2" />
+			<label for="Facturacion" class="mt-2">Direccion de Facturacion</label>
+			<nabu-city-picker></nabu-city-picker>
+			<input type="text" id="Addr1" (input)="checkAddr()" class="form-control mt-2" placeholder="Carrera 1 #2-34" aria-label="Linea de direccion 1" />
+			<input type="text" class="form-control mt-2" placeholder="Conjunto Recidencial ABC" aria-label="Linea de direccion 2" />
+			<input type="text" class="form-control mt-2" placeholder="Departamento 12" aria-label="Detalle de direccion" />
+		</div>
+	</form>
+</div>

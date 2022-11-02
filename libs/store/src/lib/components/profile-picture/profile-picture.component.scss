@@ -1,0 +1,32 @@
+.profile-picture {
+	aspect-ratio: 1;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	padding: 0;
+	object-fit: contain;
+}
+.profile-picture fa-icon {
+	color: rgb(42, 3, 80);
+	font-size: 5em;
+}
+
+.profile-picture img {
+	object-fit: cover;
+	max-width: 100%;
+}
+
+.border {
+	border-width: 5px;
+	border-color: rgb(42, 3, 80);
+	border-style: solid;
+}
+
+.sm {
+	width: 34px;
+}
+
+.md {
+	width: 5em;
+}
